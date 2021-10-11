@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+  <form method="post" action="/submit/">
+
+        <input type="hidden" name="qid" value={{ qid }}>
+      {% csrf_token %}
+
+      <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h6>Your Details</h6>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Name</h5>
+                    <input type="text" name="studName" placeholder="Enter your name">
+                    <h5 class="card-title">Roll No</h5>
+                    <input type="text" name="studRollNo" placeholder="Enter your roll no">
+                  </div>
+                </div>
+            </div>
+            {% for question in questions %}
+                <div class="col-lg-4">
+                    <div class="card">
+                      <div class="card-header">
+                        <h6>Q{{ forloop.counter }} {{ question.question_text }}</h6>
+                      </div>
+                      <div class="card-body">
+                        {% for answer in question.answer_set.all %}
+                            <input type="radio" name="{{ question.id }}" value="{{ answer.id }}">{{ answer.content }}<br>
+                        {% endfor %}
+                    </div>
+                </div>
+                </div>
+            {% endfor %}
+      </div>
+      <br>
+      <div class="row">
+          <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <input type="submit" value="submit">
+            </div>
+            <div class="col-md-4"></div>
+      </div>
+  </form>
+{% endblock %}
+
+
+
+
+

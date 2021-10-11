@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+
+        <div class="row">
+         <table class="table table-bordered">
+              <thead>
+               <tr>
+                <th>Select Quiz</th>
+              </tr>
+             </thead>
+            <tbody>
+            {% for quiz in quizzes %}
+                <tr>
+                    <td>
+                        <input type="radio" name="qid" value="{{ quiz.id }}">{{ quiz.title }}
+                    </td>
+                </tr>
+            {% endfor %}
+                <tr>
+                    <td><input type="submit" value="search" class="btn btn-secondary btn-block"></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+     </form>
+        <hr>
+        <hr>
+  <div class="row">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Quiz</th>
+                <th>Student Name</th>
+                <th>Student Roll No</th>
+                  <th>Score</th>
+                  <th>Submission Time</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for qr in quizResult %}
+              <tr>
+                <td>{{ qr.quiz.title }}</td>
+                <td>{{ qr.studName }}</td>
+                <td>{{ qr.studRollNo }}</td>
+                <td>{{ qr.score }}</td>
+                <td>{{ qr.subTime }}</td>
+              </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+  </div>
+
+
+
+    <hr>
+        <div class="row">
+
+            <h3>{{ msg }}</h3>
+
+        </div>
+
+{% endblock %}

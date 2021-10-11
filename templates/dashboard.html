@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+  <div class="row">
+        {% for classroom in classrooms %}
+            <div class="col-lg-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h3>{{classroom.name}}</h3>
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-title">Teacher: <kbd>{{classroom.teacher.user.get_full_name}}</kbd></h6>
+                    <a href="/classroom/{{ classroom.id }}" class="btn btn-primary">Enter</a>
+                  </div>
+                </div>
+            </div>
+        {% endfor %}
+  </div>
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+
+  <div class="footer-copyright text-center py-3">© 2021 Copyright
+
+      <a href="/teacher/">
+          {% if request.user.is_authenticated %}
+            My Dashboard
+          {% else %}
+            are you the teacher ? (Please Click me)
+          {% endif %}
+      </a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+    <form method="post">
+    {% csrf_token %}
+  <div class="row">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Details</th>
+                <th>Data</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Question</td>
+                <td><input type="text" name="qtext" placeholder="enter your question"></td>
+              </tr>
+              <tr>
+                <td>Option 1</td>
+                <td><input type="text" name="option1" placeholder="enter your option 1"></td>
+              </tr>
+              <tr>
+                <td>Option 2</td>
+                <td><input type="text" name="option2" placeholder="enter your option 2"></td>
+              </tr>
+              <tr>
+                <td>Option 3</td>
+                <td><input type="text" name="option3" placeholder="enter your option 3"></td>
+              </tr>
+              <tr>
+                <td>Option 4</td>
+                <td><input type="text" name="option4" placeholder="enter your option 4"></td>
+              </tr>
+                <tr>
+                <td>Correct Option </td>
+                <td><input type="radio" name="correct" value="1">1
+                    <input type="radio" name="correct" value="2">2
+                    <input type="radio" name="correct" value="3">3
+                    <input type="radio" name="correct" value="4">4
+                </td>
+              </tr>
+            </tbody>
+        </table>
+  </div>
+    <div class="row">
+            <div class="col-lg-4">
+               <input type="submit" value="create" class="btn btn-success btn-block">
+            </div>
+
+        </div>
+
+    </form>
+    <hr>
+        <div class="row">
+
+            <h3>{{ msg }}</h3>
+
+        </div>
+
+{% endblock %}

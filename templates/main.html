@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QuestionHub</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">QuestionHub</a>
+        <ul class="navbar-nav mr-auto"></ul>
+        {% if user.is_authenticated  %}
+        <ul class="navbar-nav nav-flex-icons ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <img src="https://via.placeholder.com/150?text=profile" class="rounded-circle"
+                style="height: 34px;" alt="avatar image">
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="navbarDropdownMenuLink-55">
+              <a class="dropdown-item" href="/teacher/">Dashboard</a>
+
+              <a class="dropdown-item" href="/teacher/logout">Logout</a>
+            </div>
+          </li>
+        </ul>
+        {% endif %}
+
+    </nav>
+    <br>
+    <div class="container-fluid">
+        {% block content %}
+        {% endblock content %}
+    </div>
+</body>
+</html>
